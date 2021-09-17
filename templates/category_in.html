@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- catagory section -->
+
+  <section class="catagory_section layout_padding">
+    <div class="catagory_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+           {% for cat2 in category_in_2 %}
+              <h2>{{ cat2.name }}</h2>
+              <p>{{ cat2.description }}</p>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for cat in category_in %}
+                <div class="col-sm-6 col-md-3 ">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="{{ cat.imageURL }}">
+                        </div>
+                        <div class="detail-box">
+{#                            <h5><a href="{% url 'category_in'  cat.id %}">{{ cat.name }}</a></h5>#}
+                            <h5>{{ cat.name }}</h5>
+                            <p>{{ cat.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end catagory section -->
+
+
+{% endblock %}
