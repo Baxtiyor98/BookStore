@@ -21,8 +21,7 @@
                             <img src="{{ cat.imageURL }}">
                         </div>
                         <div class="detail-box">
-{#                            <h5><a href="{% url 'category_in'  cat.id %}">{{ cat.name }}</a></h5>#}
-                            <h5>{{ cat.name }}</h5>
+                            <h5><a href="{% url 'cat_lesson'  cat.id %}">{{ cat.name }}</a></h5>
                             <p>{{ cat.description }}</p>
                         </div>
                     </div>
