@@ -19,7 +19,7 @@
 {#                            <a><embed src=></a>#}
                         </div>
                         <div class="detail-box">
-                            <h5><a href="{% url 'inside_lesson' lesson.id %}">{{ forloop.counter }}-dars</a></h5>
+                            <h5><a href="{% url 'inside_lesson' lesson.id forloop.counter %}">{{ forloop.counter }}-dars</a></h5>
                         </div>
                     </div>
                 </div>
