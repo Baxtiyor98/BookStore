@@ -38,8 +38,9 @@ class Products(models.Model):
 class Inside_Products_File(models.Model):
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=250, null=True)
-    file = models.FileField(upload_to='files',null=True)
-    video_file = models.FileField(upload_to='videos',null=True)
+    image = models.ImageField(default='images/favicon.png',null=True,blank=True)
+    file = models.FileField(upload_to='files',null=True,blank=True)
+    video_file = models.FileField(upload_to='videos',null=True,blank=True)
     price = models.FloatField(default=0.0)
     description = models.TextField(null=True)
     add_time = models.DateTimeField(auto_now_add=True)
@@ -47,6 +48,12 @@ class Inside_Products_File(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def imageURL(self):
+        try:
+            return self.image.url
+        except:
+            return ''
     @property
     def fileURL(self):
         try:
