@@ -8,10 +8,8 @@
     <div class="catagory_container">
       <div class="container ">
         <div class="heading_container heading_center">
-           {% for cat2 in category_in_2 %}
-              <h2>{{ cat2.name }}</h2>
-              <p>{{ cat2.description }}</p>
-            {% endfor %}
+              <h2>{{ category_in_2.name }}</h2>
+              <p>{{ category_in_2.description }}</p>
         </div>
         <div class="row">
             {% for cat in category_in %}
@@ -21,7 +19,7 @@
                             <img src="{{ cat.imageURL }}">
                         </div>
                         <div class="detail-box">
-                            <h5><a href="{% url 'cat_lesson'  cat.id %}">{{ cat.name }}</a></h5>
+                            <h5><a href="{% url 'cat_lesson' cat.id %}">{{ cat.name }}</a></h5>
                             <p>{{ cat.description }}</p>
                         </div>
                     </div>

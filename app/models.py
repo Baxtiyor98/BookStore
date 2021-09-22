@@ -15,7 +15,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
 class Products(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=250, null=True)
@@ -34,11 +33,10 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name
-
 class Inside_Products_File(models.Model):
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=250, null=True)
-    image = models.ImageField(default='images/favicon.png',null=True,blank=True)
+    image = models.ImageField(default='media/images/favicon.png',null=True,blank=True)
     file = models.FileField(upload_to='files',null=True,blank=True)
     video_file = models.FileField(upload_to='videos',null=True,blank=True)
     price = models.FloatField(default=0.0)

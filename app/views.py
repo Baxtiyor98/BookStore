@@ -10,12 +10,11 @@ def category(request):
     categ = Category.objects.all()
     return render(request,'categories.html',{'categories':categ})
 def category_in(request,id):
-    categ = Category.objects.filter(id=id)
+    categ = Category.objects.get(id=id)
     p = Products.objects.filter(category_id=id)
     return render(request, 'category_in.html', {'category_in':p,
                                                 'category_in_2': categ,
                                                 })
-
 def cat_lesson(request,id):
     print('id keldi.....',id)
     les = Products.objects.get(id=id)
@@ -24,14 +23,16 @@ def cat_lesson(request,id):
         'inside_lesson': lesson,
         'lesson_name': les
     }
-    return render(request, 'cat_lesson.html', context)
+    return render(request, 'product_lesson.html', context)
 
-def inside_lesson(request,id,tr):
-    if tr==1 or request.user.is_authenticated:
-        les = Products.objects.get(id=1)
-        lesson = Inside_Products_File.objects.filter(id=id)
-        return render(request, 'inside_lesson.html', {'inside_lesson':lesson,
-                                                  'lesson_name':les})
+def inside_lesson(request,id,pr):
+    first_item = Inside_Products_File.objects.filter(product_id = pr).order_by('id')[0]
+    les = Products.objects.get(id=1)
+    lesson = Inside_Products_File.objects.get(id=id)
+    print(first_item.id,lesson)
+    if first_item.name == lesson.name or request.user.is_authenticated:
+        return render(request, 'inside_lesson.html', {'lesson':lesson,
+                                              'lesson_name':les})
     else:
         return redirect(log_in)
 
