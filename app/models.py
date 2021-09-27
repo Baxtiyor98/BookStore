@@ -29,10 +29,8 @@ class Products(models.Model):
             return self.image.url
         except:
             return ''
-
-
     def __str__(self):
-        return self.name
+        return f"{self.name} {self.id}"
 class Inside_Products_File(models.Model):
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=250, null=True)

@@ -9,5 +9,9 @@ urlpatterns = [
     path('inside_lesson/<int:id>/<int:pr>',inside_lesson , name='inside_lesson'),
     path('register/' , register, name='register'),
     path('log_in/', log_in, name='log_in'),
-    path('log_out/' , log_out , name='log_out')
+    path('log_out/' , log_out , name='log_out'),
+    path('dashboard/' , dashboard , name='dashboard'),
+    path('product_category/' , pr_category , name='product_category'),
+    path('save/', save , name='save')
+
 ]
